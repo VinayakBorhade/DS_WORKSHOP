@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name = "viewport" content = "width = device-width, initial-scale = 1">
+    <link rel = "stylesheet"
+       href = "https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel = "stylesheet"
+       href = "https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css">
+    <script type = "text/javascript"
+       src = "https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src = "https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js"></script>
+    <script type="text/javascript">
+     function get_action(form) {
+        form.action = get_url()
+    }
+      function get_url(){
+          var q = document.getElementById("query");
+          var q_value = q.options[q.selectedIndex].value;
+          var url=""
+          if(q_value == 1)
+          {
+            url = "/runQuery1";
+          }
+          else if(q_value == 2)
+          {
+            url = "/runQuery2";
+          }
+          else if(q_value == 3)
+          {
+            url = "/runQuery3";
+          }
+          else if(q_value == 4)
+          {
+            url = "/runQuery4";
+          }
+          else if(q_value == 5)
+          {
+            url = "runQuery5";
+          }
+          else if(q_value == 6)
+          {
+            url = "runQuery6";
+          }
+
+          return url;
+      }
+  </script>
+  <script>
+       $(document).ready(function() {
+          $('select').material_select();
+       });
+    </script>
+</head>
+
+<body class="grey darken-4 green-text">
+    <div class="green-text  text-accent-4 center-align" style="padding-top:10%;">
+        <h1>Applications of DS</h1></div>
+    <div class="center-align" style="padding-top:3%;">
+    <form onsubmit="get_action(this);" method="POST">
+
+        <a class="btn green accent-4" href="/createDB">Create Database</a>
+        <input type="submit" class="btn green accent-4" value="Run Queries">
+        <br>
+        <br>
+        <br>
+        <div class = "row">
+          <div class="col s4 m4 l4 offset-l4">
+            <label class="green-text  text-accent-4"><h5>Select Query</h5></label>
+               <select id="query">
+                  <option value = "" disabled class="green-text  text-accent-4">Select Query Number</option>
+                  <option value = "1" selected class="green-text  text-accent-4">Query 1</option>
+                  <option value = "2" class="green-text  text-accent-4">Query 2</option>
+                  <option value = "3" class="green-text  text-accent-4">Query 3</option>
+                  <option value = "4" class="green-text  text-accent-4">Query 4</option>
+                  <option value = "5" class="green-text  text-accent-4">Query 5</option>
+                  <option value = "6" class="green-text  text-accent-4">Query 6</option>
+               </select>
+            </div>
+
+          </div>
+    </form>
+    </div>
+</body>
+
+</html>
