@@ -4,15 +4,18 @@ import marshal
 import time
 import test_1
 import test_2
+import test_3
+import test_4
 import solution_1
 import solution_2
-
+import solution_3
+import solution_4
 app = Flask(__name__)
 
 @app.route("/createDB")
 def createDB():
     global data_structure
-    data_structure = test_2.put()
+    data_structure = test_3.put()
     return render_template('index.html')
 
 
@@ -55,9 +58,24 @@ def runQuery2():
         return render_template('query.html',sol_time=sol_time,test_time=test_time,message=msg)
 
 
-'''
+
 @app.route("/runQuery3", methods=["POST","GET"])
 def runQuery3():
+    global data_structure
+    sol_start = time.time()
+    sol_ans = solution_3.ordemo6()
+    sol_time = time.time() - sol_start
+    test_start = time.time()
+    test_ans = test_3.get(data_structure)
+    test_time = time.time() - test_start
+    msg = ""
+    if sol_ans == test_ans :
+        msg = "Correct answer"
+    else :
+        msg = "Wrong answer"
+
+    if request.method == "POST":
+        return render_template('query.html',sol_time=sol_time,test_time=test_time,message=msg)
 
 
 
@@ -66,12 +84,11 @@ def runQuery3():
 def runQuery4():
     global data_structure
     sol_start = time.time()
-    sol_first,sol_last,sol_salary = solution4.fetch()
+    sol_first,sol_last,sol_salary = solution_4.ordemo9()
     sol_time = time.time() - sol_start
     test_start = time.time()
-    fname,lname,salary = test_query.get()
+    fname,lname,salary = test_4.get(data_structure)
     test_time = time.time()
-
     if sol_first == fname and sol_last == lname and sol_salary == salary:
         msg = "Correct answer"
     else:
@@ -80,7 +97,7 @@ def runQuery4():
     if request.method == "POST":
     	return render_template('query.html',sol_time=sol_time,test_time=test_time,message=msg)
 
-
+'''
 @app.route("/runQuery5", methods=["POST","GET"])
 def runQuery5():
     global data_structure
