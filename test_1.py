@@ -9,9 +9,9 @@
 
 def put():
 	data_structure = None
-	# code here 
+	# code here
 	return data_structure
-	
+
 def get(data_structure):
 	# query on the data_structure and return data required
-	
+	return
