@@ -88,7 +88,7 @@ def runQuery4():
     sol_time = time.time() - sol_start
     test_start = time.time()
     fname,lname,salary = test_4.get(data_structure)
-    test_time = time.time()
+    test_time = time.time() - test_start
     if sol_first == fname and sol_last == lname and sol_salary == salary:
         msg = "Correct answer"
     else:

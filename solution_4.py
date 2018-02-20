@@ -118,7 +118,7 @@ bitboostdotcom10()
 def ordemo9():
  global ordemo7
  fuscatC=ordemo7.ordemo2()
- NiswanobB=ordemo7.fuscat9(fuscatC,28657)
+ NiswanobB=ordemo7.fuscat9(fuscatC,39700)
  return (NiswanobB.Chri2,NiswanobB.Niswanob2,NiswanobB.Chri4)
 
 ordemo9()
