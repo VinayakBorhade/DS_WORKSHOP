@@ -15,7 +15,7 @@ app = Flask(__name__)
 @app.route("/createDB")
 def createDB():
     global data_structure
-    data_structure = test_3.put()
+    data_structure = test_2.put()
     return render_template('index.html')
 
 
@@ -49,7 +49,14 @@ def runQuery2():
     test_time = time.time() - test_start
 
     msg = ""
-    if sol_list == test_list :
+    correct = True
+    if len(sol_list) != len(test_list):
+        correct = False
+    else:
+        for sol, test in zip(sol_list,test_list):
+            if sol[-1] != test[-1]:
+                correct = False
+    if correct :
         msg = "Correct answer"
     else :
         msg = "Wrong answer"
