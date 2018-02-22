@@ -69,12 +69,27 @@ def runQuery2():
 @app.route("/runQuery3", methods=["POST","GET"])
 def runQuery3():
     global data_structure
-    sol_start = time.time()
-    sol_ans = solution_3.ordemo6()
-    sol_time = time.time() - sol_start
-    test_start = time.time()
-    test_ans = test_3.get(data_structure)
-    test_time = time.time() - test_start
+    ranges = [(10,100),(300,400), (1,10000),(15000,15001), (350,2999)]
+    solut = 0
+    solua = []
+    for r in ranges:
+        sol_start = time.time()
+        sol_ans = solution_3.get(r[0],r[1])
+        sol_time = time.time() - sol_start
+        solua.append(sol_ans)
+        solut+=sol_time
+    testt = 0
+    testa = []
+    for r in ranges:
+        test_start = time.time()
+        test_ans = test_3.get(data_structure,r[0],r[1])
+        test_time = time.time() - test_start
+        testa.append(test_ans)
+        testt+=test_time
+    sol_time = solut
+    test_time = testt
+    sol_ans = solua
+    test_ans = testa
     msg = ""
     if sol_ans == test_ans :
         msg = "Correct answer"
@@ -85,24 +100,39 @@ def runQuery3():
         return render_template('query.html',sol_time=sol_time,test_time=test_time,message=msg)
 
 
-
-
 @app.route("/runQuery4", methods=["POST","GET"])
 def runQuery4():
     global data_structure
-    sol_start = time.time()
-    sol_first,sol_last,sol_salary = solution_4.ordemo9()
-    sol_time = time.time() - sol_start
-    test_start = time.time()
-    fname,lname,salary = test_4.get(data_structure)
-    test_time = time.time() - test_start
-    if sol_first == fname and sol_last == lname and sol_salary == salary:
+    employee_ids=[39000,20003,38657,31000,10003,28500,39461,39788,39999,39986,34093,11803]
+    solution_time=0
+    testing_time=0
+    sol_list=[]
+    test_list=[]
+    for id in employee_ids:
+        sol_ans=[]
+        sol_start = time.time()
+        sol_first,sol_last,sol_salary = solution_4.ordemo9(id)
+        sol_time = time.time() - sol_start
+        sol_ans=[sol_first,sol_last,sol_salary]
+        print "sol_ans :",
+        print sol_ans
+        sol_list.append(sol_ans)
+        solution_time+=sol_time
+    for id in employee_ids:
+        test_ans=[]
+        test_start = time.time()
+        fname,lname,salary = test_4.get(data_structure,id)
+        test_time = time.time() - test_start
+        test_ans=[fname,lname,salary]
+        test_list.append(test_ans)
+        testing_time+=test_time
+    if sol_list == test_list:
         msg = "Correct answer"
     else:
         msg = "Wrong answer"
 
     if request.method == "POST":
-    	return render_template('query.html',sol_time=sol_time,test_time=test_time,message=msg)
+    	return render_template('query.html',sol_time=solution_time,test_time=testing_time,message=msg)
 
 '''
 @app.route("/runQuery5", methods=["POST","GET"])
@@ -138,4 +168,4 @@ def index():
 
 if __name__ =="__main__":
     app.debug = True
-    app.run(port=1234)
+    app.run()

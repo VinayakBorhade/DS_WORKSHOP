@@ -12,6 +12,6 @@ def put():
 	# code here
 	return data_structure
 
-def get(data_structure):
+def get(data_structure,r1,r2):
 	# query on the data_structure and return data required
 	return
