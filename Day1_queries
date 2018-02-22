@@ -2,4 +2,8 @@ Your tasks for today are :
 
 1. Get first name,last name,salary of the employee with the minimum salary
 
-2. Get the details of all employees ordered by salary(return a list of all entries in the csv in the same order of occurence).
+2. Get the details of all employees ordered by salary(return a list of all entries in the csv in the same order of occurence
+
+3. Get the average of salaries for the specified ranges of Sr.Nos.
+
+4. Get the First Name,Last Name,Salary of employees given their Employee Id
